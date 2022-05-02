@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({Key? key}) : super(key: key);
@@ -37,7 +38,11 @@ class _TelegramNick extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text ('@siniioduvan');
+    return const Text ('@siniioduvan',
+    style: TextStyle(
+      fontSize: 14,
+      color: Colors.grey,
+    ),);
   }
 }
 
@@ -48,7 +53,11 @@ class _Phone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('+7 (927) 632 85 62');
+    return const Text('+7 (927) 632 85 62',
+    style: TextStyle(
+      fontSize: 14,
+      color: Colors.grey,
+    ),);
   }
 }
 
@@ -59,7 +68,11 @@ class _NameAndSurname extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Anton Bubnov');
+    return const Text('Anton Bubnov',
+    style: TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w600,
+    ),);
   }
 }
 
