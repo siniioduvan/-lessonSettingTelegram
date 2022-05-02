@@ -8,6 +8,7 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         title: Center(child: Text('Настройки')),
       ),
@@ -16,20 +17,50 @@ class UserProfile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            _UserInfo(),
             SizedBox(height: 30),
-            _Avatar(),
-            SizedBox(height: 10),
-            _NameAndSurname(),
-            SizedBox(height: 10),
-            _Phone(),
-            SizedBox(height: 10),
-            _TelegramNick(),
           ],
         ),
       ),
     );
   }
 }
+
+class _MenuBlock extends StatelessWidget {
+  const _MenuBlock({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+
+
+class _UserInfo extends StatelessWidget {
+  const _UserInfo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      color: Colors.white,
+      child: Column(
+        children: [
+          SizedBox(height: 30),
+          _Avatar(),
+          SizedBox(height: 10),
+          _NameAndSurname(),
+          SizedBox(height: 10),
+          _Phone(),
+          SizedBox(height: 10),
+          _TelegramNick(),
+        ],
+      ),
+    );
+  }
+}
+
 
 class _TelegramNick extends StatelessWidget {
   const _TelegramNick({
