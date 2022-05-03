@@ -3,23 +3,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class UserProfile extends StatelessWidget {
-  const UserProfile({Key? key}) : super(key: key);
+   final List <_MenuRowData> menuRow = [
+    _MenuRowData(Icons.favorite, 'Избранное'),
+    _MenuRowData(Icons.phone, 'Звонки'),
+    _MenuRowData(Icons.computer, 'Устройства'),
+    _MenuRowData(Icons.folder, 'Папка с чатами'),
+  ];
+   final List <_MenuRowData> menuRowTwo = [
+    _MenuRowData(Icons.notifications, 'Уведомления и звуки'),
+    _MenuRowData(Icons.privacy_tip, 'Конфиденциальность'),
+    _MenuRowData(Icons.memory, 'Данные и память'),
+    _MenuRowData(Icons.brush, 'Оформление'),
+    _MenuRowData(Icons.language, 'Язык'),
+  ];
+    UserProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: Center(child: Text('Настройки')),
+        title: const Center(child: Text('Настройки')),
       ),
       body: Container(
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _UserInfo(),
-            SizedBox(height: 20),
-            _MenuBlock(),
+            const _UserInfo(),
+            const SizedBox(height: 15),
+            _MenuBlock(menuRow: menuRow),
+            SizedBox (height: 15),
+            _MenuBlock(menuRow: menuRowTwo),
           ],
         ),
       ),
@@ -27,11 +42,17 @@ class UserProfile extends StatelessWidget {
   }
 }
 
-class _MenuWidgetRow extends StatelessWidget {
+class _MenuRowData {
   final IconData icon;
   final String text;
 
-  const _MenuWidgetRow({Key? key, required this.icon, required this.text})
+  _MenuRowData(this.icon, this.text);
+}
+
+class _MenuWidgetRow extends StatelessWidget {
+  final _MenuRowData data;
+
+  const _MenuWidgetRow({Key? key, required this.data})
       : super(key: key);
 
   @override
@@ -40,10 +61,10 @@ class _MenuWidgetRow extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          Icon(Icons.favorite),
-          SizedBox(width: 20),
-          Expanded(child: Text('Избранное')),
-          Icon(Icons.chevron_right_sharp),
+          Icon(data.icon),
+          const SizedBox(width: 20),
+          Expanded(child: Text(data.text)),
+          const Icon(Icons.chevron_right_sharp),
         ],
       ),
     );
@@ -51,14 +72,17 @@ class _MenuWidgetRow extends StatelessWidget {
 }
 
 class _MenuBlock extends StatelessWidget {
-  const _MenuBlock({Key? key}) : super(key: key);
+  final List <_MenuRowData> menuRow;
+  const _MenuBlock({Key? key, required this.menuRow}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       width: double.infinity,
-      child: Column(),
+      child: Column(
+        children: menuRow.map((data) => _MenuWidgetRow(data: data)).toList(),
+      ),
     );
   }
 }
@@ -73,14 +97,14 @@ class _UserInfo extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          SizedBox(height: 30),
-          _Avatar(),
-          SizedBox(height: 10),
-          _NameAndSurname(),
-          SizedBox(height: 10),
-          _Phone(),
-          SizedBox(height: 10),
-          _TelegramNick(),
+          const SizedBox(height: 15),
+          const _Avatar(),
+          const SizedBox(height: 5),
+          const _NameAndSurname(),
+          const SizedBox(height: 5),
+          const _Phone(),
+          const SizedBox(height: 5),
+          const _TelegramNick(),
         ],
       ),
     );
@@ -145,6 +169,6 @@ class _Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(width: 100, height: 100, child: Placeholder());
+    return Container(width: 100, height: 100, child: const Placeholder());
   }
 }
