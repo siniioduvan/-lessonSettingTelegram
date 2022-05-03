@@ -18,9 +18,33 @@ class UserProfile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _UserInfo(),
-            SizedBox(height: 30),
+            SizedBox(height: 20),
+            _MenuBlock(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _MenuWidgetRow extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
+  const _MenuWidgetRow({Key? key, required this.icon, required this.text})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Icon(Icons.favorite),
+          SizedBox(width: 20),
+          Expanded(child: Text('Избранное')),
+          Icon(Icons.chevron_right_sharp),
+        ],
       ),
     );
   }
@@ -38,8 +62,6 @@ class _MenuBlock extends StatelessWidget {
     );
   }
 }
-
-
 
 class _UserInfo extends StatelessWidget {
   const _UserInfo({Key? key}) : super(key: key);
@@ -65,7 +87,6 @@ class _UserInfo extends StatelessWidget {
   }
 }
 
-
 class _TelegramNick extends StatelessWidget {
   const _TelegramNick({
     Key? key,
@@ -73,11 +94,13 @@ class _TelegramNick extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text ('@siniioduvan',
-    style: TextStyle(
-      fontSize: 14,
-      color: Colors.grey,
-    ),);
+    return const Text(
+      '@siniioduvan',
+      style: TextStyle(
+        fontSize: 14,
+        color: Colors.grey,
+      ),
+    );
   }
 }
 
@@ -88,11 +111,13 @@ class _Phone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('+7 (927) 632 85 62',
-    style: TextStyle(
-      fontSize: 14,
-      color: Colors.grey,
-    ),);
+    return const Text(
+      '+7 (927) 632 85 62',
+      style: TextStyle(
+        fontSize: 14,
+        color: Colors.grey,
+      ),
+    );
   }
 }
 
@@ -103,11 +128,13 @@ class _NameAndSurname extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Anton Bubnov',
-    style: TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.w600,
-    ),);
+    return const Text(
+      'Anton Bubnov',
+      style: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+      ),
+    );
   }
 }
 
@@ -118,9 +145,6 @@ class _Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width:100,
-        height: 100,
-        child: Placeholder());
+    return Container(width: 100, height: 100, child: Placeholder());
   }
 }
