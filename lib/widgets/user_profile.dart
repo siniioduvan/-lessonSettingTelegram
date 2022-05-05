@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class UserProfile extends StatelessWidget {
-   final List <_MenuRowData> menuRow = [
+  final List<_MenuRowData> menuRow = [
     _MenuRowData(Icons.favorite, 'Избранное'),
     _MenuRowData(Icons.phone, 'Звонки'),
     _MenuRowData(Icons.computer, 'Устройства'),
     _MenuRowData(Icons.folder, 'Папка с чатами'),
   ];
-   final List <_MenuRowData> menuRowTwo = [
+  final List<_MenuRowData> menuRowTwo = [
     _MenuRowData(Icons.notifications, 'Уведомления и звуки'),
     _MenuRowData(Icons.privacy_tip, 'Конфиденциальность'),
     _MenuRowData(Icons.memory, 'Данные и память'),
     _MenuRowData(Icons.brush, 'Оформление'),
     _MenuRowData(Icons.language, 'Язык'),
   ];
-    UserProfile({Key? key}) : super(key: key);
+
+  UserProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class UserProfile extends StatelessWidget {
             const _UserInfo(),
             const SizedBox(height: 15),
             _MenuBlock(menuRow: menuRow),
-            SizedBox (height: 15),
+            SizedBox(height: 15),
             _MenuBlock(menuRow: menuRowTwo),
           ],
         ),
@@ -52,8 +53,7 @@ class _MenuRowData {
 class _MenuWidgetRow extends StatelessWidget {
   final _MenuRowData data;
 
-  const _MenuWidgetRow({Key? key, required this.data})
-      : super(key: key);
+  const _MenuWidgetRow({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,8 @@ class _MenuWidgetRow extends StatelessWidget {
 }
 
 class _MenuBlock extends StatelessWidget {
-  final List <_MenuRowData> menuRow;
+  final List<_MenuRowData> menuRow;
+
   const _MenuBlock({Key? key, required this.menuRow}) : super(key: key);
 
   @override
